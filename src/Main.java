@@ -24,6 +24,7 @@ public class Main {
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
     public static final String QUIT_MSG = "Goodbye!";
+    public static final String EQUAL_PHONES_MSG = "There are contacts that share phone numbers.";
     public static final String COMMAND_ERROR = "Unknown command.";
 
     public static void main(String[] args) {
