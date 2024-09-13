@@ -57,7 +57,7 @@ public class Main {
                     listAllContacts(cBook);
                     break;
                 case EQUAL_PHONES:
-                    listEqualPhones(cBook);
+                    checkEqualPhones(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -152,5 +152,9 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void checkEqualPhones(ContactBook cBook) {
+        // TODO
     }
 }
