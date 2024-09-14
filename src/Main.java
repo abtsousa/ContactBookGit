@@ -61,7 +61,7 @@ public class Main {
         int phone = in.nextInt(); in.nextLine();
         String email = in.nextLine();
 
-        if (!cBook.hasContact(name)) {
+        if (!cBook.hasContactByName(name)) {
             cBook.addContact(name, phone, email);
             System.out.println(CONTACT_ADDED);
         }
@@ -71,7 +71,7 @@ public class Main {
     private static void deleteContact(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
 
-        if (cBook.hasContact(name)) {
+        if (cBook.hasContactByName(name)) {
             cBook.deleteContact(name);
             System.out.println(CONTACT_REMOVED);
         }
@@ -81,7 +81,7 @@ public class Main {
     private static void getPhone(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
 
-        if (cBook.hasContact(name)) {
+        if (cBook.hasContactByName(name)) {
             System.out.println(cBook.getPhone(name));
         }
         else System.out.println(NAME_NOT_EXIST);
@@ -89,7 +89,7 @@ public class Main {
 
     private static void getEmail(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
-        if (cBook.hasContact(name)) {
+        if (cBook.hasContactByName(name)) {
             System.out.println(cBook.getEmail(name));
         }
         else System.out.println(NAME_NOT_EXIST);
@@ -99,7 +99,7 @@ public class Main {
         String name = in.nextLine();
         int phone = in.nextInt(); in.nextLine();
 
-        if (cBook.hasContact(name)) {
+        if (cBook.hasContactByName(name)) {
             cBook.setPhone(name,phone);
             System.out.println(CONTACT_UPDATED);
         }
@@ -110,7 +110,7 @@ public class Main {
         String name = in.nextLine();
         String email = in.nextLine();
 
-        if (cBook.hasContact(name)) {
+        if (cBook.hasContactByName(name)) {
             cBook.setEmail(name,email);
             System.out.println(CONTACT_UPDATED);
         }
@@ -129,6 +129,11 @@ public class Main {
     }
 
     private static void getName (Scanner in, ContactBook cBook) {
+        int phone = in.nextInt(); in.nextLine();
 
+        if (cBook.hasContactByPhone(phone)) {
+            System.out.println(cBook.getName(phone));
+        }
+        else System.out.println(GET_NAME_MSG);
     }
 }
