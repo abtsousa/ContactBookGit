@@ -1,7 +1,5 @@
 package contactBook;
 
-import contactBook.Contact;
-
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -74,7 +72,7 @@ public class ContactBook {
     }
 
     private void resize() {
-        Contact tmp[] = new Contact[2*contacts.length];
+        Contact[] tmp = new Contact[2 * contacts.length];
         for (int i=0;i<counter; i++)
             tmp[i] = contacts[i];
         contacts = tmp;
@@ -97,9 +95,9 @@ public class ContactBook {
     public boolean hasEqualPhoneNumber() {
         boolean result = false;
         int current = 0;
-        int next = 1;
-        while (current < counter-1 && !result) {
-            while (next < counter-1 && !result) {
+        while (current < counter && !result) {
+            int next = current + 1;
+            while (next < counter && !result) {
                 if (contacts[current].getPhone() == contacts[next].getPhone()) {
                     result = true;
                 }
@@ -109,5 +107,4 @@ public class ContactBook {
         }
         return result;
     }
-
 }
