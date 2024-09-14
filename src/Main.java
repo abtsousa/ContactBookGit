@@ -14,6 +14,7 @@ public class Main {
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
     public static final String EQUAL_PHONES   = "EP";
+    public static final String GET_NAME       = "GN";
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
@@ -23,9 +24,10 @@ public class Main {
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
-    public static final String QUIT_MSG = "Goodbye!";
+    public static final String GET_NAME_MSG     = "Phone number does not exist.";
     public static final String EQUAL_PHONES_SUCCESS = "There are contacts that share phone numbers.";
     public static final String EQUAL_PHONES_FAIL = "All contacts have different phone numbers.";
+    public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
 
     public static void main(String[] args) {
@@ -35,32 +37,16 @@ public class Main {
 
         while (!comm.equals(QUIT)){
             switch (comm) {
-                case ADD_CONTACT:
-                    addContact(in,cBook);
-                    break;
-                case REMOVE_CONTACT:
-                    deleteContact(in,cBook);
-                    break;
-                case GET_PHONE:
-                    getPhone(in,cBook);
-                    break;
-                case GET_EMAIL:
-                    getEmail(in,cBook);
-                    break;
-                case SET_PHONE:
-                    setPhone(in,cBook);
-                    break;
-                case SET_EMAIL:
-                    setEmail(in,cBook);
-                    break;
-                case LIST_CONTACTS:
-                    listAllContacts(cBook);
-                    break;
-                case EQUAL_PHONES:
-                    checkEqualPhones(cBook);
-                    break;
-                default:
-                    System.out.println(COMMAND_ERROR);
+                case ADD_CONTACT    -> addContact(in,cBook);
+                case REMOVE_CONTACT -> deleteContact(in,cBook);
+                case GET_PHONE      -> getPhone(in,cBook);
+                case GET_EMAIL      -> getEmail(in,cBook);
+                case SET_PHONE      ->  setPhone(in,cBook);
+                case SET_EMAIL      -> setEmail(in,cBook);
+                case LIST_CONTACTS  -> listAllContacts(cBook);
+                case GET_NAME       -> getName(in, cBook);
+                case EQUAL_PHONES   -> checkEqualPhones(cBook);
+                default             -> System.out.println(COMMAND_ERROR);
             }
             System.out.println();
             comm = getCommand(in);
@@ -71,19 +57,14 @@ public class Main {
     }
 
     private static String getCommand(Scanner in) {
-        String input;
-
-        input = in.nextLine().toUpperCase();
-        return input;
+        return in.nextLine().toUpperCase();
     }
 
     private static void addContact(Scanner in, ContactBook cBook) {
-        String name, email;
-        int phone;
+        String name = in.nextLine();
+        int phone = in.nextInt(); in.nextLine();
+        String email = in.nextLine();
 
-        name = in.nextLine();
-        phone = in.nextInt(); in.nextLine();
-        email = in.nextLine();
         if (!cBook.hasContact(name)) {
             cBook.addContact(name, phone, email);
             System.out.println(CONTACT_ADDED);
@@ -92,8 +73,8 @@ public class Main {
     }
 
     private static void deleteContact(Scanner in, ContactBook cBook) {
-        String name;
-        name = in.nextLine();
+        String name = in.nextLine();
+
         if (cBook.hasContact(name)) {
             cBook.deleteContact(name);
             System.out.println(CONTACT_REMOVED);
@@ -102,8 +83,8 @@ public class Main {
     }
 
     private static void getPhone(Scanner in, ContactBook cBook) {
-        String name;
-        name = in.nextLine();
+        String name = in.nextLine();
+
         if (cBook.hasContact(name)) {
             System.out.println(cBook.getPhone(name));
         }
@@ -111,8 +92,7 @@ public class Main {
     }
 
     private static void getEmail(Scanner in, ContactBook cBook) {
-        String name;
-        name = in.nextLine();
+        String name = in.nextLine();
         if (cBook.hasContact(name)) {
             System.out.println(cBook.getEmail(name));
         }
@@ -120,10 +100,9 @@ public class Main {
     }
 
     private static void setPhone(Scanner in, ContactBook cBook) {
-        String name;
-        int phone;
-        name = in.nextLine();
-        phone = in.nextInt(); in.nextLine();
+        String name = in.nextLine();
+        int phone = in.nextInt(); in.nextLine();
+
         if (cBook.hasContact(name)) {
             cBook.setPhone(name,phone);
             System.out.println(CONTACT_UPDATED);
@@ -132,10 +111,9 @@ public class Main {
     }
 
     private static void setEmail(Scanner in, ContactBook cBook) {
-        String name;
-        String email;
-        name = in.nextLine();
-        email = in.nextLine();
+        String name = in.nextLine();
+        String email = in.nextLine();
+
         if (cBook.hasContact(name)) {
             cBook.setEmail(name,email);
             System.out.println(CONTACT_UPDATED);
@@ -152,6 +130,15 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void getName (Scanner in, ContactBook cBook) {
+        int phone = in.nextInt(); in.nextLine();
+
+        if (cBook.hasContact(phone)) {
+            System.out.println(cBook.getName(phone));
+        }
+        else System.out.println(GET_NAME_MSG);
     }
 
     private static void checkEqualPhones(ContactBook cBook){
