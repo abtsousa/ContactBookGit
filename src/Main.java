@@ -17,15 +17,15 @@ public class Main {
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
-    public static final String CONTACT_EXISTS   = "contactBook.Contact already exists.";
-    public static final String NAME_NOT_EXIST   = "contactBook.Contact does not exist.";
-    public static final String CONTACT_ADDED    = "contactBook.Contact added.";
-    public static final String CONTACT_REMOVED  = "contactBook.Contact removed.";
-    public static final String CONTACT_UPDATED  = "contactBook.Contact updated.";
-    public static final String BOOK_EMPTY       = "contactBook.Contact book empty.";
-    public static final String GET_NAME_MSG     = "Phone number does not exist.";
-    public static final String QUIT_MSG         = "Goodbye!";
-    public static final String COMMAND_ERROR    = "Unknown command.";
+    public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
+    public static final String NAME_NOT_EXIST = "contactBook.Contact does not exist.";
+    public static final String CONTACT_ADDED = "contactBook.Contact added.";
+    public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
+    public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
+    public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
+    public static final String GET_NAME_MSG = "Phone number does not exist.";
+    public static final String QUIT_MSG = "Goodbye!";
+    public static final String COMMAND_ERROR = "Unknown command.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -61,7 +61,7 @@ public class Main {
         int phone = in.nextInt(); in.nextLine();
         String email = in.nextLine();
 
-        if (!cBook.hasContactByName(name)) {
+        if (!cBook.hasContact(name)) {
             cBook.addContact(name, phone, email);
             System.out.println(CONTACT_ADDED);
         }
@@ -71,7 +71,7 @@ public class Main {
     private static void deleteContact(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
 
-        if (cBook.hasContactByName(name)) {
+        if (cBook.hasContact(name)) {
             cBook.deleteContact(name);
             System.out.println(CONTACT_REMOVED);
         }
@@ -81,7 +81,7 @@ public class Main {
     private static void getPhone(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
 
-        if (cBook.hasContactByName(name)) {
+        if (cBook.hasContact(name)) {
             System.out.println(cBook.getPhone(name));
         }
         else System.out.println(NAME_NOT_EXIST);
@@ -89,7 +89,7 @@ public class Main {
 
     private static void getEmail(Scanner in, ContactBook cBook) {
         String name = in.nextLine();
-        if (cBook.hasContactByName(name)) {
+        if (cBook.hasContact(name)) {
             System.out.println(cBook.getEmail(name));
         }
         else System.out.println(NAME_NOT_EXIST);
@@ -99,7 +99,7 @@ public class Main {
         String name = in.nextLine();
         int phone = in.nextInt(); in.nextLine();
 
-        if (cBook.hasContactByName(name)) {
+        if (cBook.hasContact(name)) {
             cBook.setPhone(name,phone);
             System.out.println(CONTACT_UPDATED);
         }
@@ -110,7 +110,7 @@ public class Main {
         String name = in.nextLine();
         String email = in.nextLine();
 
-        if (cBook.hasContactByName(name)) {
+        if (cBook.hasContact(name)) {
             cBook.setEmail(name,email);
             System.out.println(CONTACT_UPDATED);
         }
@@ -131,7 +131,7 @@ public class Main {
     private static void getName (Scanner in, ContactBook cBook) {
         int phone = in.nextInt(); in.nextLine();
 
-        if (cBook.hasContactByPhone(phone)) {
+        if (cBook.hasContact(phone)) {
             System.out.println(cBook.getName(phone));
         }
         else System.out.println(GET_NAME_MSG);

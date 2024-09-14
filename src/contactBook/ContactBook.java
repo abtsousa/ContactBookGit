@@ -14,20 +14,20 @@ public class ContactBook {
     }
 
     //Pre: name != null
-    public boolean hasContactByName(String name) {
-        return searchIndexByName(name) >= 0;
+    public boolean hasContact(String name) {
+        return searchIndex(name) >= 0;
     }
 
     //Pre: phone != null
-    public boolean hasContactByPhone(int phone) {
-        return searchIndexByPhone(phone) >= 0;
+    public boolean hasContact(int phone) {
+        return searchIndex(phone) >= 0;
     }
 
     public int getNumberOfContacts() {
         return counter;
     }
 
-    //Pre: name!= null && !hasContactByName(name)
+    //Pre: name!= null && !hasContact(name)
     public void addContact(String name, int phone, String email) {
         if (counter == contacts.length)
             resize();
@@ -35,38 +35,40 @@ public class ContactBook {
         counter++;
     }
 
-    //Pre: name != null && hasContactByName(name)
+    //Pre: name != null && hasContact(name)
     public void deleteContact(String name) {
-        int index = searchIndexByName(name);
+        int index = searchIndex(name);
         for(int i=index; i<counter; i++)
             contacts[i] = contacts[i+1];
         counter--;
     }
 
-    //Pre: name != null && hasContactByName(name)
+    //Pre: name != null && hasContact(name)
     public int getPhone(String name) {
-        return contacts[searchIndexByName(name)].getPhone();
+        return contacts[searchIndex(name)].getPhone();
     }
 
-    //Pre: name != null && hasContactByName(name)
+    //Pre: name != null && hasContact(name)
     public String getEmail(String name) {
-        return contacts[searchIndexByName(name)].getEmail();
+        return contacts[searchIndex(name)].getEmail();
     }
 
-    //Pre: phone != null && hasContactByPhone(phone)
-    public String getName(int phone) { return contacts[searchIndexByPhone(phone)].getName(); }
+    //Pre: phone != null && hasContact(phone)
+    public String getName(int phone) {
+        return contacts[searchIndex(phone)].getName();
+    }
 
-    //Pre: name != null && hasContactByName(name)
+    //Pre: name != null && hasContact(name)
     public void setPhone(String name, int phone) {
-        contacts[searchIndexByName(name)].setPhone(phone);
+        contacts[searchIndex(name)].setPhone(phone);
     }
 
-    //Pre: name != null && hasContactByName(name)
+    //Pre: name != null && hasContact(name)
     public void setEmail(String name, String email) {
-        contacts[searchIndexByName(name)].setEmail(email);
+        contacts[searchIndex(name)].setEmail(email);
     }
 
-    private int searchIndexByName(String name) {
+    private int searchIndex(String name) {
         int i = 0;
         int result = -1;
 
@@ -80,10 +82,9 @@ public class ContactBook {
         return result;
     }
 
-    private int searchIndexByPhone(int phone) {
+    private int searchIndex(int phone) {
         int i = 0;
         int result = -1;
-
         boolean found = false;
         while (i<counter && !found)
             if (contacts[i].getPhone() == phone)
