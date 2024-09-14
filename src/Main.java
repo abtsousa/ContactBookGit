@@ -119,7 +119,12 @@ public class Main {
     }
 
     private static void getName(Scanner in, ContactBook cBook) {
-        // TODO
+        int phone;
+        phone = in.nextInt(); in.nextLine();
+        if (cBook.hasContact(phone)) {
+            System.out.println(cBook.getName(phone));
+        }
+        else System.out.println(GET_NAME_MSG);
     }
 
     private static void setPhone(Scanner in, ContactBook cBook) {
