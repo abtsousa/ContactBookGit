@@ -52,7 +52,7 @@ LC
 EP
 ```
 
-* **GN**: Looks up a contact given its phone number (*GN* command). The operation receives a phone number and returns the contact with that given number. In case there are several contacts with that same phone number, the oldest contact is returned.
+* **GN**: Looks up a contact given its phone number (*GN* command).
 ```
 GN
 phone
