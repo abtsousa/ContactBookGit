@@ -42,25 +42,36 @@ name
 email
 ```
 
+* **LC**: Lists, by order of insertion, the existing contacts in the contact book.
+```
+LC
+```
 
+* **EP**: Checks if there are contacts with the same phone number.
+```
+EP
+```
 
-
-
-ULookup a contact given its phone number (GN command). The operation receives a phone number and returns the contact with that given number. In case there are several contacts with that same phone number, the oldest contact is returned. The operation fails if: (1) the phone number does not match any contact ("Phone number does not exist.").
-
-Check if there are contacts with the same phone number (EP command). This operation always succeeds. In case there are contacts with the same phone number, the feedback message is "There are contacts that share phone numbers.". Otherwise, the feedback message is "All contacts have different phone numbers".
-
-End the program execution with the message "Goodbye!".
+* **GN**: Looks up a contact given its phone number (*GN* command). The operation receives a phone number and returns the contact with that given number. In case there are several contacts with that same phone number, the oldest contact is returned.
+```
+GN
+phone
+```
+* **Q**: End the program execution with the message "Goodbye!".
+```
+Q
+```
 
 ## Installation
 1. Clone the repo
 ```
 git clone https://github.com/MiguelGoulao/ContactBookGit
 ```
+
+## Original Author
+* Miguel Goulão
+
 ## Currently Contributing
 * Afonso Sousa
 * Alexandre Cristóvão
 * Ana Lopes
-
-## Original Author
-* Miguel Goulão
