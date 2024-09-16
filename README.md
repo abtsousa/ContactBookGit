@@ -10,46 +10,46 @@ The application manages a contact book. Each contact has a name, a phone number 
 
 ```
 AC
-name
-phone
-email
+[name]
+[phone]
+[email]
 ```
 
 * **RC**: Removes a contact from the contact book.
 
 ```
 RC
-name
+[name]
 ```
 
 * **GP**: Gets the phone number of a contact.
 
 ```
 GP
-name
+[name]
 ```
 
 * **GE**: Gets the email address of a contact.
 
 ```
-GP
-name
+GE
+[name]
 ```
 
 * **SP**: Updates the phone number of a contact.
 
 ```
 SP
-name
-phone
+[name]
+[phone]
 ```
 
 * **SE**: Updates the email address of a contact.
 
 ```
 SE
-name
-email
+[name]
+[email]
 ```
 
 * **LC**: Lists, by order of insertion, the existing contacts in the contact book.
@@ -68,7 +68,7 @@ EP
 
 ```
 GN
-phone
+[phone]
 ```
 
 * **Q**: End the program execution with the message "Goodbye!".
