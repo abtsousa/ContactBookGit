@@ -64,7 +64,7 @@ LC
 EP
 ```
 
-* **GN**: Looks up a contact given its phone number (*GN* command).
+* **GN**: Looks up a contact given its phone number.
 
 ```
 GN
