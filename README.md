@@ -3,6 +3,7 @@
 The application manages a contact book. Each contact has a name, a phone number and an email.
 
 ## Usage
+
 ### Commands
 
 * **AC**: Add a new contact to the contact book
@@ -77,9 +78,11 @@ Q
 ```
 
 ## Original Author
+
 * Miguel Goulão
 
 ## Currently Contributing
-* Afonso Sousa
-* Alexandre Cristóvão
-* Ana Lopes
+
+* Afonso Brás Sousa (LEI 65263)
+* Alexandre Cristóvão (LEI 65143)
+* Ana Margarida Lopes (LEI 64557)
